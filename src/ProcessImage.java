@@ -9,6 +9,8 @@ import ij.process.ColorProcessor;
 
 public class ProcessImage
 {
+	
+	private static boolean first = true;
 	public static void main(String[] args) throws IOException, URISyntaxException
 	{
 		if (args.length < 1)
@@ -20,6 +22,7 @@ public class ProcessImage
 			{
 				for (File file : subdir.listFiles()) // iterate through picture directories
 				{
+					if (first){
 					File lbp_file = new File(lbp_dir+"\\"+file.getParentFile().getName()+"\\"+file.getName());
 					
 					// load the image
@@ -28,21 +31,27 @@ public class ProcessImage
 			        // set parameters of algorithm
 			        final int radius = 1;
 			        final int numPoints = 16;
-			        final int histogramBins = 2;
+			        final int cells = 4;
 			        
 			        // initiate algorithm
-			        LocalBinaryPatterns descriptor = new LocalBinaryPatterns(radius,numPoints,histogramBins);
+			        LocalBinaryPatterns descriptor = new LocalBinaryPatterns(radius,numPoints,cells);
 			        
 			        // obtain the features
-			        List<double[]> features = descriptor.run(image);
-		
-			        BufferedImage img = new BufferedImage(image.getWidth(),image.getHeight(),BufferedImage.TYPE_INT_RGB);
-			        for (double[] feature : features)
+			        List<Histogram> features = descriptor.run(image);
+			        
+			        // find a way to visualize histograms
+			        
+			        for (Histogram f : features)
 			        {
-			            int colour = feature[2] == 1 ? -1 : 0;
-			            img.setRGB((int) feature[0], (int) feature[1], colour);
+			        	int[] hist = f.getHistogram();
+			        	for (int i : hist)
+			        	{
+			        		System.out.print(i+" ");
+			        	}
+			        	System.out.println();
 			        }
-			        ImageIO.write(img,  "jpg", lbp_file);
+			        first = false;
+					}
 				}
 			}
 		}
@@ -60,21 +69,23 @@ public class ProcessImage
 		        // set parameters of algorithm
 		        final int radius = 1;
 		        final int numPoints = 16;
-		        final int histogramBins = 2;
+		        final int cells = 4;
 		        
 		        // initiate algorithm
-		        LocalBinaryPatterns descriptor = new LocalBinaryPatterns(radius,numPoints,histogramBins);
+		        LocalBinaryPatterns descriptor = new LocalBinaryPatterns(radius,numPoints,cells);
 		        
 		        // obtain the features
-		        List<double[]> features = descriptor.run(image);
-	
-		        BufferedImage img = new BufferedImage(image.getWidth(),image.getHeight(),BufferedImage.TYPE_INT_RGB);
-		        for (double[] feature : features)
+		        List<Histogram> features = descriptor.run(image);
+		        
+		        for (Histogram f : features)
 		        {
-		            int colour = feature[2] == 1 ? -1 : 0;
-		            img.setRGB((int) feature[0], (int) feature[1], colour);
+		        	int[] hist = f.getHistogram();
+		        	for (int i : hist)
+		        	{
+		        		System.out.print(i+" ");
+		        	}
+		        	System.out.println();
 		        }
-		        ImageIO.write(img,  "jpg", writeFile);
 			}
 		}
     }

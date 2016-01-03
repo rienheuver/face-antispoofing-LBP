@@ -7,22 +7,22 @@ public class LocalBinaryPatterns {
 
     private double radius;
     private int numPoints;
-    private int histogramSize;
+    private int cells;
 
     private double angle;
     private double[] offsets;
     private ImageProcessor ip;
     
-    private List<double[]> data = new ArrayList<>(1);
+    private List<Histogram> data = new ArrayList<>();
 
-    public LocalBinaryPatterns(double radius, int numPoints, int histogramBins) {
+    public LocalBinaryPatterns(double radius, int numPoints, int cells) {
     	this.radius = radius;
     	this.numPoints = numPoints;
         this.angle = 2.0 * Math.PI / numPoints;
-        this.histogramSize = histogramBins;
+        this.cells = cells;
     }
 
-    public List<double[]> run(ImageProcessor ip) {
+    public List<Histogram> run(ImageProcessor ip) {
         final int width = ip.getWidth();
         final int height = ip.getHeight();
         this.ip = ip.convertToByte(true);
@@ -34,34 +34,20 @@ public class LocalBinaryPatterns {
             offsets[i * 2 + 1] = radius * Math.sin(a);
         }
 
-        for (int y = 0; y < height ; y++) {
-            for (int x = 0; x < width; x++) {
-            	this.data.add(processPixel(x, y));
-            }
+        for (int i = 0; i < Math.sqrt(cells); i++) {
+        	for (int j = 0; j < Math.sqrt(cells); j++)
+        	{
+        		Histogram hist = new Histogram(numPoints, (int) Math.pow(2, numPoints));
+
+                for (int y = (height/cells)*j; y < (height/cells)*(j+1); y++) {
+                    for (int x = (width/cells)*i; x < (width/cells)*(i+1); x++) {
+                    	hist.add(getBinaryPattern(x, y));
+                    }
+                }
+                this.data.add(hist);
+        	}
         }
-        return data;
-    }
-
-    private double[] processPixel(final int x, final int y) {
-        int xStart = Math.max(x, 0);
-        int xEnd = Math.min(x + 1, ip.getWidth());
-        int yStart = Math.max(y, 0);
-        int yEnd = Math.min(y + 1, ip.getHeight());
-
-        Histogram hist = new Histogram(histogramSize, (int) Math.pow(2, numPoints));
-
-        for (int yi = yStart; yi < yEnd; yi++) {
-            for (int xi = xStart; xi < xEnd; xi++) {
-                hist.add(getBinaryPattern(xi, yi));
-            }
-        }
-
-        double[] histarr = hist.getHistogramm();
-        double[] data = new double[histarr.length + 2];
-        data[0] = x;
-        data[1] = y;
-        System.arraycopy(histarr, 0, data, 2, histarr.length);
-
+        
         return data;
     }
 

@@ -1,10 +1,10 @@
 public class Histogram {
 
-    final double[] histogram;
+    final int[] histogram;
     final double binWidth, maxValue;
 
     public Histogram(int bins, double maxValue) {
-        this.histogram = new double[bins];
+        this.histogram = new int[bins];
         this.binWidth = maxValue / bins;
         this.maxValue = maxValue;
     }
@@ -17,7 +17,7 @@ public class Histogram {
         histogram[bin]++;
     }
     
-    public double[] getHistogramm() {
+    public int[] getHistogram() {
         return histogram;
     }
 }
