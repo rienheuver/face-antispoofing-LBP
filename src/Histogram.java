@@ -1,23 +1,26 @@
+import java.util.Map;
+import java.util.TreeMap;
+
 public class Histogram {
 
-    final int[] histogram;
-    final double binWidth, maxValue;
+    final Map<Integer, Integer> histogram;
 
-    public Histogram(int bins, double maxValue) {
-        this.histogram = new int[bins];
-        this.binWidth = maxValue / bins;
-        this.maxValue = maxValue;
+    public Histogram(int bins) {
+        this.histogram = new TreeMap<Integer,Integer>();
     }
 
-    public void add(double value) {
-        int bin = (int) (value / binWidth);
-        if (bin > histogram.length) {
-            bin--;
+    public void add(int value) {
+    	int amount = 0;
+    	if (histogram.containsKey(value)) {
+            amount = histogram.get(value);
+            amount++;
+        } else {
+            amount = 1;
         }
-        histogram[bin]++;
+    	histogram.put(value, amount);
     }
     
-    public int[] getHistogram() {
+    public Map<Integer,Integer> getHistogram() {
         return histogram;
     }
 }

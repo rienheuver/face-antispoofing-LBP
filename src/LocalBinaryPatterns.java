@@ -37,7 +37,7 @@ public class LocalBinaryPatterns {
         for (int i = 0; i < Math.sqrt(cells); i++) {
         	for (int j = 0; j < Math.sqrt(cells); j++)
         	{
-        		Histogram hist = new Histogram(numPoints, (int) Math.pow(2, numPoints));
+        		Histogram hist = new Histogram(numPoints);
 
                 for (int y = (height/cells)*j; y < (height/cells)*(j+1); y++) {
                     for (int x = (width/cells)*i; x < (width/cells)*(i+1); x++) {

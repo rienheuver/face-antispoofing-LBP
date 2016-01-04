@@ -1,16 +1,21 @@
+import java.awt.BorderLayout;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+
 import ij.process.ColorProcessor;
 
 public class ProcessImage
 {
 	
-	private static boolean first = true;
 	public static void main(String[] args) throws IOException, URISyntaxException
 	{
 		if (args.length < 1)
@@ -22,7 +27,6 @@ public class ProcessImage
 			{
 				for (File file : subdir.listFiles()) // iterate through picture directories
 				{
-					if (first){
 					File lbp_file = new File(lbp_dir+"\\"+file.getParentFile().getName()+"\\"+file.getName());
 					
 					// load the image
@@ -30,7 +34,7 @@ public class ProcessImage
 
 			        // set parameters of algorithm
 			        final int radius = 1;
-			        final int numPoints = 16;
+			        final int numPoints = 8;
 			        final int cells = 4;
 			        
 			        // initiate algorithm
@@ -43,14 +47,24 @@ public class ProcessImage
 			        
 			        for (Histogram f : features)
 			        {
-			        	int[] hist = f.getHistogram();
-			        	for (int i : hist)
-			        	{
-			        		System.out.print(i+" ");
-			        	}
-			        	System.out.println();
-			        }
-			        first = false;
+			        	Map<Integer,Integer> hist = f.getHistogram();
+			        	/*JFrame frame = new JFrame("Test");
+			            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			            frame.setLayout(new BorderLayout());
+			            frame.add(new JScrollPane(new VisualHistogram(hist,(int) Math.pow(2, numPoints))));
+			            frame.pack();
+			            frame.setLocationRelativeTo(null);
+			            frame.setVisible(true);*/
+			        	
+			        	VisualHistogram frame = new VisualHistogram(hist, (int) Math.pow(2,  numPoints));
+			            
+			            BufferedImage bi = new BufferedImage(frame.getWidth(), frame.getHeight(), BufferedImage.TYPE_INT_ARGB); 
+			            Graphics g = bi.createGraphics();
+			            frame.paint(g);
+			            g.dispose();
+			            try{ImageIO.write(bi,"png",lbp_file);}catch (Exception e) {
+			            	System.out.println("Image creation failed");
+			            }
 					}
 				}
 			}
@@ -66,9 +80,9 @@ public class ProcessImage
 				// load the image
 		        ColorProcessor image = new ColorProcessor(ImageIO.read(file));
 	
-		        // set parameters of algorithm
+		     // set parameters of algorithm
 		        final int radius = 1;
-		        final int numPoints = 16;
+		        final int numPoints = 8;
 		        final int cells = 4;
 		        
 		        // initiate algorithm
@@ -77,14 +91,18 @@ public class ProcessImage
 		        // obtain the features
 		        List<Histogram> features = descriptor.run(image);
 		        
+		        // find a way to visualize histograms
+		        
 		        for (Histogram f : features)
 		        {
-		        	int[] hist = f.getHistogram();
-		        	for (int i : hist)
-		        	{
-		        		System.out.print(i+" ");
-		        	}
-		        	System.out.println();
+		        	Map<Integer,Integer> hist = f.getHistogram();
+		        	JFrame frame = new JFrame("Test");
+		            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		            frame.setLayout(new BorderLayout());
+		            frame.add(new JScrollPane(new VisualHistogram(hist,(int) Math.pow(2, numPoints))));
+		            frame.pack();
+		            frame.setLocationRelativeTo(null);
+		            frame.setVisible(true);
 		        }
 			}
 		}
