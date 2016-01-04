@@ -27,7 +27,7 @@ public class ProcessImage
 			{
 				for (File file : subdir.listFiles()) // iterate through picture directories
 				{
-					File lbp_file = new File(lbp_dir+"\\"+file.getParentFile().getName()+"\\"+file.getName());
+					File lbp_file = new File(lbp_dir+"/"+file.getParentFile().getName()+"/"+file.getName());
 					
 					// load the image
 			        ColorProcessor image = new ColorProcessor(ImageIO.read(file));
@@ -42,30 +42,8 @@ public class ProcessImage
 			        
 			        // obtain the features
 			        List<Histogram> features = descriptor.run(image);
-			        
-			        // find a way to visualize histograms
-			        
-			        for (Histogram f : features)
-			        {
-			        	Map<Integer,Integer> hist = f.getHistogram();
-			        	/*JFrame frame = new JFrame("Test");
-			            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			            frame.setLayout(new BorderLayout());
-			            frame.add(new JScrollPane(new VisualHistogram(hist,(int) Math.pow(2, numPoints))));
-			            frame.pack();
-			            frame.setLocationRelativeTo(null);
-			            frame.setVisible(true);*/
-			        	
-			        	VisualHistogram frame = new VisualHistogram(hist, (int) Math.pow(2,  numPoints));
-			            
-			            BufferedImage bi = new BufferedImage(frame.getWidth(), frame.getHeight(), BufferedImage.TYPE_INT_ARGB); 
-			            Graphics g = bi.createGraphics();
-			            frame.paint(g);
-			            g.dispose();
-			            try{ImageIO.write(bi,"png",lbp_file);}catch (Exception e) {
-			            	System.out.println("Image creation failed");
-			            }
-					}
+			        VisualHistogram vh = new VisualHistogram(features,(int) Math.pow(2, numPoints));
+			        vh.saveImage(lbp_file);
 				}
 			}
 		}
@@ -99,7 +77,7 @@ public class ProcessImage
 		        	JFrame frame = new JFrame("Test");
 		            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		            frame.setLayout(new BorderLayout());
-		            frame.add(new JScrollPane(new VisualHistogram(hist,(int) Math.pow(2, numPoints))));
+		            frame.add(new JScrollPane(new VisualHistogram(features,(int) Math.pow(2, numPoints))));
 		            frame.pack();
 		            frame.setLocationRelativeTo(null);
 		            frame.setVisible(true);
