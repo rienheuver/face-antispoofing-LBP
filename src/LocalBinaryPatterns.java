@@ -41,7 +41,11 @@ public class LocalBinaryPatterns {
 
                 for (int y = (height/cells)*j; y < (height/cells)*(j+1); y++) {
                     for (int x = (width/cells)*i; x < (width/cells)*(i+1); x++) {
-                    	hist.add(getBinaryPattern(x, y));
+                    	int value = getBinaryPattern(x, y);
+                    	if (value >= 0)
+                    	{
+                    		hist.add(getBinaryPattern(x, y));
+                    	}
                     }
                 }
                 this.data.add(hist);
@@ -58,7 +62,7 @@ public class LocalBinaryPatterns {
             double xi = x + offsets[i * 2];
             double yi = y + offsets[i * 2 + 1];
             if (xi < 0 || xi >= ip.getWidth() || yi < 0 || yi >= ip.getHeight())
-                return 0;
+                return -1;
 
             double val = ip.getInterpolatedPixel(xi, yi);
             if (val > centerPixel) {
