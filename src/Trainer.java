@@ -87,6 +87,7 @@ public class Trainer
 	
 		svm = new C_SVC();
 		
+		// null pointer in problem
 		if (svm instanceof BinaryClassificationSVM && problem.getLabels().size() > 2)
 		{
 			svm = new MultiClassificationSVM((BinaryClassificationSVM) svm);
