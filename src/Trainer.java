@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collection;
@@ -45,7 +46,12 @@ public class Trainer
 	
 	private static final Float UNSPECIFIED_GAMMA = -1F;
 	
-	public Trainer() throws IOException
+	public Trainer(File inputFile) throws IOException
+	{
+		this.input_file_name = inputFile.getName();
+	}
+	
+	public void run() throws IOException
 	{
 		long startTime = System.currentTimeMillis();
 		
@@ -68,12 +74,7 @@ public class Trainer
 		int degree = 3;
 		Set<Float> gammaSet = new HashSet<Float>();
 		gammaSet.add(UNSPECIFIED_GAMMA);
-//		float gamma = 0;
 		float coef0 = 0;
-		
-		//scalingModelLearner = new LinearScalingModelLearner(scalingExamples, normalizeL2);
-		
-		input_file_name = "";
 		
 		int p = input_file_name.lastIndexOf('/');
 		++p;
@@ -91,10 +92,7 @@ public class Trainer
 			svm = new MultiClassificationSVM((BinaryClassificationSVM) svm);
 		}
 	
-	
-		//TreeExecutorService execService = new DepthFirstThreadPoolExecutor();
-	
-		model = svm.train(problem, param); //, execService);
+		model = svm.train(problem, param);
 	
 		model.save(model_file_name);
 	
@@ -103,7 +101,7 @@ public class Trainer
 		if (cv == null && crossValidation)
 		{
 			// but if not, force it
-			cv = svm.performCrossValidation(problem, param); //, execService);
+			cv = svm.performCrossValidation(problem, param);
 		}
 		if (cv != null)
 		{
@@ -116,8 +114,6 @@ public class Trainer
 		float time = (endTime - startTime) / 1000f;
 	
 		System.out.println("Finished in " + time + " secs");
-	
-		//	execService.shutdown();
 	}
 
 	private void read_problem() throws IOException
@@ -142,7 +138,6 @@ public class Trainer
 			SparseVector x = new SparseVector(m);
 			for (int j = 0; j < m; j++)
 			{
-				//x[j] = new svm_node();
 				x.indexes[j] = Integer.parseInt(st.nextToken());
 				x.values[j] = Float.parseFloat(st.nextToken());
 			}
@@ -152,7 +147,6 @@ public class Trainer
 			}
 			vx.addElement(x);
 		}
-		
 		
 		// build problem
 		if (svm instanceof RegressionSVM)
@@ -177,15 +171,9 @@ public class Trainer
 			}
 		}
 		
-		
-		//boolean isClassification = svm instanceof BinaryClassificationSVM;
 		for (int i = 0; i < vy.size(); i++)
 		{
 			problem.addExampleFloat(vx.elementAt(i), vy.elementAt(i));
-			/*		if (isClassification)
-		   {
-			   problem.uniqueValues.add(new Float(vy.elementAt(i)));
-		   }*/
 		}
 		if (problem instanceof BinaryClassificationProblem)
 		{
