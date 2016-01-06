@@ -32,8 +32,9 @@ public class Trainer
 		this.input_file_name = inputFile.getName();
 	}
 	
-	public void run() throws IOException
+	public BinaryModel run() throws IOException
 	{
+		
 		C_SVC svm = new C_SVC();
 		
 		ImmutableSvmParameterGrid.Builder builder = ImmutableSvmParameterGrid.builder();
@@ -57,10 +58,13 @@ public class Trainer
 		this.params = builder.build();
 		
 		read_problem();
-	
+		
+		
 		model = svm.train(problem, params);
-	
+		
 		model.save(model_file_name);
+		
+		return model;		
 	}
 
 	private void read_problem() throws IOException
@@ -101,8 +105,6 @@ public class Trainer
 		
 		for (int i : data.keySet())
 		{
-			System.out.println(i);
-			System.out.println(data.get(i));
 			problem.addExample(data.get(i), i);
 		}
 		

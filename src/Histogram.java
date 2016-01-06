@@ -23,4 +23,9 @@ public class Histogram {
     public Map<Integer,Integer> getHistogram() {
         return histogram;
     }
+    
+    public int size()
+    {
+    	return histogram.size();
+    }
 }

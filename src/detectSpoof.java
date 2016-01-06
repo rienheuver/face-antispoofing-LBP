@@ -17,35 +17,52 @@ public class detectSpoof
 		if (args.length < 1)
 		{
 			System.out.println("Run the system with one of the following parameters:\n"
-					+ "train\n"
-					+ "test <modelFile> <imageFile>");
+					+ "lbp\n"
+					+ "test <dataFile> <imageFile>");
 		}
 		else
 		{
 			int[] params = {radius, numPoints, cells};
 			switch (args[0])
 			{
-				case "train":
-					System.out.println("Starting training");
+				case "lbp":
+					System.out.println("Starting lbp-algorithm");
+					long startTime = System.nanoTime();
 					ProcessImage pi = new ProcessImage(params);
 					try
 					{
 						File data = pi.run();
-						Trainer t = new Trainer(data);
-						t.run();
 					}
 					catch (IOException|URISyntaxException e)
 					{
 						System.out.println("Training failed");
 					}
+					System.out.println("Finished in " + ((System.nanoTime() - startTime)/1000000) + " ms");
 					
 				break;
 				
 				case "test":
-					BinaryModel model = (BinaryModel) SolutionModel.identifyTypeAndLoad(args[1]);
+					System.out.println("Starting training");
+					startTime = System.nanoTime();
+					
+					File data = new File(args[1]);
 					File image = new File(args[2]);
 					
-					Predicter p = new Predicter(model, image, params);
+					try
+					{
+						Trainer t = new Trainer(data);
+						BinaryModel model = t.run();
+						System.out.println("Starting testing");
+						Predicter p = new Predicter(model, image, params);
+						int label = p.predict();
+						System.out.println("Prediction: "+label);
+					}
+					catch (IOException e)
+					{
+						System.out.println("IOException with files");
+					}
+					
+					System.out.println("Finished in " + ((System.nanoTime() - startTime)/1000000) + " ms");
 				break;
 			}
 		}
