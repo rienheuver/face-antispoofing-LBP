@@ -8,7 +8,7 @@ public class FeatureFile
 {
 	private String fileContents = "";
 	
-	public void addImage(List<Histogram> features, String label)
+	public void addImage(List<Histogram> features, int label)
 	{
         //<label> <index1>:<value1> <index2>:<value2> ...
 		String addition = label+" ";
