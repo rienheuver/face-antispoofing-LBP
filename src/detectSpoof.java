@@ -11,6 +11,7 @@ public class detectSpoof
     private static int radius = 1;
     private static int numPoints = 8;
     private static int cells = 4;
+    private static File data;
     
 	public static void main(String[] args)
 	{
@@ -18,7 +19,8 @@ public class detectSpoof
 		{
 			System.out.println("Run the system with one of the following parameters:\n"
 					+ "lbp\n"
-					+ "test <dataFile> <imageFile>");
+					+ "test <dataFile> <imageFile>"
+					+ "stats <dataFile>");
 		}
 		else
 		{
@@ -45,7 +47,7 @@ public class detectSpoof
 					System.out.println("Starting training");
 					startTime = System.nanoTime();
 					
-					File data = new File(args[1]);
+					data = new File(args[1]);
 					File image = new File(args[2]);
 					
 					try
@@ -64,6 +66,26 @@ public class detectSpoof
 					
 					System.out.println("Finished in " + ((System.nanoTime() - startTime)/1000000) + " ms");
 				break;
+				
+				case "stats":
+					System.out.println("Starting tests");
+					startTime = System.nanoTime();
+					
+					data = new File(args[1]);
+					
+					try
+					{
+						Trainer t = new Trainer(data);
+						BinaryModel model = t.run();
+						BulkTester bt = new BulkTester(model, params);
+						bt.run();
+					}
+					catch (IOException e)
+					{
+						System.out.println("IOException with files");
+					}
+					
+					System.out.println("Finished in " + ((System.nanoTime() - startTime)/1000000) + " ms");
 			}
 		}
 	}

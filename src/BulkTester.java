@@ -1,0 +1,71 @@
+import java.io.File;
+import java.io.IOException;
+
+import edu.berkeley.compbio.jlibsvm.binary.BinaryModel;
+
+public class BulkTester {
+	
+	private BinaryModel model;
+	private int[] params;
+	
+	public BulkTester(BinaryModel model, int[] params)
+	{
+		this.model = model;
+		this.params = params;
+	}
+	
+	public void run()
+	{
+		String pict_dir = "normalized";
+		File dir = new File(pict_dir);
+		int ta = 0;
+		int fa = 0;
+		int tr = 0;
+		int fr = 0;
+		int counter = 0;
+		
+		for (File subdir : dir.listFiles()) // iterate through main directory
+		{
+			for (File file : subdir.listFiles()) // iterate through picture directories
+			{
+				try
+				{
+					Predicter p = new Predicter(this.model, file, this.params);
+					int label = p.predict();
+					if (subdir.getName().equals("original"))
+					{
+						if (label == 1)
+						{
+							ta++;
+						}
+						else
+						{
+							fa++;
+						}
+					}
+					else
+					{
+						if (label == 0)
+						{
+							tr++;
+						}
+						else
+						{
+							fr++;
+						}
+					}
+					counter++;
+				}
+				catch (IOException e)
+				{
+					System.out.println("IOException with files");
+				}
+			}
+		}
+		System.out.println("True positives: "+ta+", "+((float) ta/counter*100)+"%");
+		System.out.println("False positives: "+fa+", "+((float) fa/counter*100)+"%");
+		System.out.println("True rejects: "+tr+", "+((float) tr/counter*100)+"%");
+		System.out.println("False rejects: "+fr+", "+((float) fr/counter*100)+"%");
+		System.out.println("Total tests: "+counter);
+	}
+}
