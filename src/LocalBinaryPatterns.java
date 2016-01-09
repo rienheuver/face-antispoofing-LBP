@@ -65,7 +65,7 @@ public class LocalBinaryPatterns {
                 return -1;
 
             double val = ip.getInterpolatedPixel(xi, yi);
-            if (val > centerPixel) {
+            if (val <= centerPixel) {
                 pattern |= 1 << i;
             }
         }

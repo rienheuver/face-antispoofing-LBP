@@ -33,7 +33,7 @@ public class detectSpoof
 					ProcessImage pi = new ProcessImage(params);
 					try
 					{
-						File data = pi.run();
+						pi.run();
 					}
 					catch (IOException|URISyntaxException e)
 					{
@@ -44,48 +44,69 @@ public class detectSpoof
 				break;
 				
 				case "test":
-					System.out.println("Starting training");
-					startTime = System.nanoTime();
-					
-					data = new File(args[1]);
-					File image = new File(args[2]);
-					
-					try
+					if (args.length < 3)
 					{
-						Trainer t = new Trainer(data);
-						BinaryModel model = t.run();
-						System.out.println("Starting testing");
-						Predicter p = new Predicter(model, image, params);
-						int label = p.predict();
-						System.out.println("Prediction: "+label);
+						System.out.println("Run the system with one of the following parameters:\n"
+							+ "lbp\n"
+							+ "test <dataFile> <imageFile>"
+							+ "stats <dataFile>");
 					}
-					catch (IOException e)
+					else
 					{
-						System.out.println("IOException with files");
+						System.out.println("Starting training");
+						startTime = System.nanoTime();
+						
+						data = new File(args[1]);
+						File image = new File(args[2]);
+						
+						try
+						{
+							Trainer t = new Trainer(data);
+							BinaryModel model = t.run();
+							System.out.println("Starting testing");
+							Predicter p = new Predicter(model, image, params);
+							int label = p.predict();
+							System.out.println("Prediction: "+label);
+						}
+						catch (IOException e)
+						{
+							System.out.println("IOException with files");
+						}
+						
+						System.out.println("Finished in " + ((System.nanoTime() - startTime)/1000000) + " ms");
 					}
-					
-					System.out.println("Finished in " + ((System.nanoTime() - startTime)/1000000) + " ms");
 				break;
 				
 				case "stats":
-					System.out.println("Starting tests");
-					startTime = System.nanoTime();
-					
-					data = new File(args[1]);
-					
-					try
+					if (args.length < 2)
 					{
-						Trainer t = new Trainer(data);
-						BinaryModel model = t.run();
-						BulkTester bt = new BulkTester(model, params);
-						bt.run();
+						System.out.println("Run the system with one of the following parameters:\n"
+								+ "lbp\n"
+								+ "test <dataFile> <imageFile>"
+								+ "stats <dataFile>");
 					}
-					catch (IOException e)
+					else
 					{
-						System.out.println("IOException with files");
+						System.out.println("Starting tests");
+						startTime = System.nanoTime();
+						
+						data = new File(args[1]);
+						
+						try
+						{
+							Trainer t = new Trainer(data);
+							BinaryModel model = t.run();
+							BulkTester bt = new BulkTester(model, params);
+							bt.run();
+						}
+						catch (IOException e)
+						{
+							System.out.println("IOException with files");
+						}
+						
+						System.out.println("Finished in " + ((System.nanoTime() - startTime)/1000000) + " ms");
 					}
-					
-					System.out.println("Finished in " + ((System.nanoTime() - startTime)/1000000) + " ms");
+				break;
 			}
 		}
 	}

@@ -23,7 +23,7 @@ public class ProcessImage
 	
 	public File run() throws IOException, URISyntaxException
 	{
-		String pict_dir = "normalized";
+		String pict_dir = "train";
 		String lbp_dir = "lbps";
 		File dir = new File(pict_dir);
 		FeatureFile trainData = new FeatureFile();

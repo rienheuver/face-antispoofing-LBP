@@ -1,0 +1,41 @@
+\begin{thebibliography}{1}
+
+\bibitem{anjos2014face}
+A.~Anjos, J.~Komulainen, S.~Marcel, A.~Hadid, and M.~Pietik{\"a}inen.
+\newblock Face anti-spoofing: Visual approach.
+\newblock In {\em Handbook of Biometric Anti-Spoofing}, pages 65--82. Springer,
+  2014.
+
+\bibitem{bai2010physics}
+J.~Bai, T.-T. Ng, X.~Gao, and Y.-Q. Shi.
+\newblock Is physics-based liveness detection truly possible with a single
+  image?
+\newblock In {\em Circuits and systems (ISCAS), Proceedings of 2010 IEEE
+  international symposium on}, pages 3425--3428. IEEE, 2010.
+
+\bibitem{bao2009liveness}
+W.~Bao, H.~Li, N.~Li, and W.~Jiang.
+\newblock A liveness detection method for face recognition based on optical
+  flow field.
+\newblock In {\em Image Analysis and Signal Processing, 2009. IASP 2009.
+  International Conference on}, pages 233--236. IEEE, 2009.
+
+\bibitem{bolle2005system}
+R.~M. Bolle, J.~H. Connell, and N.~K. Ratha.
+\newblock System and method for liveness authentication using an augmented
+  challenge/response scheme, Feb.~1 2005.
+\newblock US Patent 6,851,051.
+
+\bibitem{maatta2011face}
+J.~M{\"a}{\"a}tt{\"a}, A.~Hadid, and M.~Pietikainen.
+\newblock Face spoofing detection from single images using micro-texture
+  analysis.
+\newblock In {\em Biometrics (IJCB), 2011 international joint conference on},
+  pages 1--7. IEEE, 2011.
+
+\bibitem{zhao2003face}
+W.~Zhao, R.~Chellappa, P.~J. Phillips, and A.~Rosenfeld.
+\newblock Face recognition: A literature survey.
+\newblock {\em ACM computing surveys (CSUR)}, 35(4):399--458, 2003.
+
+\end{thebibliography}

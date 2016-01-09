@@ -40,7 +40,8 @@ public class BulkTester {
 						}
 						else
 						{
-							fa++;
+							System.out.println("Falsely rejected: "+subdir.getName()+"/"+file.getName());
+							fr++;
 						}
 					}
 					else
@@ -51,7 +52,8 @@ public class BulkTester {
 						}
 						else
 						{
-							fr++;
+							System.out.println("Falsely accepted: "+subdir.getName()+"/"+file.getName());
+							fa++;
 						}
 					}
 					counter++;
@@ -62,10 +64,10 @@ public class BulkTester {
 				}
 			}
 		}
-		System.out.println("True positives: "+ta+", "+((float) ta/counter*100)+"%");
-		System.out.println("False positives: "+fa+", "+((float) fa/counter*100)+"%");
-		System.out.println("True rejects: "+tr+", "+((float) tr/counter*100)+"%");
-		System.out.println("False rejects: "+fr+", "+((float) fr/counter*100)+"%");
+		System.out.println("TAR: "+((float) ta/counter*100)+"% ("+ta+"/"+counter);
+		System.out.println("FAR: "+((float) fa/counter*100)+"% "+fa+"/"+counter);
+		System.out.println("TRR: "+((float) tr/counter*100)+"% "+tr+"/"+counter);
+		System.out.println("FRR: "+((float) fr/counter*100)+"% "+fr+"/"+counter);
 		System.out.println("Total tests: "+counter);
 	}
 }

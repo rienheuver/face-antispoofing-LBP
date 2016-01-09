@@ -1,0 +1,125 @@
+
+\documentclass{sig-alternate-br}
+
+\pagenumbering{arabic}
+
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+\begin{document}
+
+\title{Face Spoofing Detection on Mobile Phones in a User-friendly Manner.}
+
+
+\numberofauthors{1}
+
+\author{
+\alignauthor
+Rien Heuver\\
+       \affaddr{University of Twente}\\
+       \affaddr{P.O. Box 217, 7500AE Enschede}\\
+       \affaddr{The Netherlands}\\
+       \email{rienheuver@gmail.com}
+}
+
+\maketitle
+
+\begin{abstract}
+In this paper...
+\end{abstract}
+
+\section{Introduction} \label{introduction}
+In modern day technology, speed and user-friendliness are two key factors for successful software. The popularity of mobile phones is ever increasing, but they are still limited in their capacity. To identify people automatically, we can use biometric techniques, such as face recognition \cite{zhao2003face}, effectively. However, these identification processes can often be spoofed easily \cite{anjos2014face}. Many solutions to detect the liveliness of the user, in order to detect such spoofing attacks, otherwise known as presentation attacks, are available \cite{bao2009liveness}, though their practicality can be questioned. An example among them is to ask the user to perform a certain task, which can then be checked by the system. If the task is performed correctly the user is accepted to not be fake. This is called a challenge-response technique \cite{bolle2005system}. Such a technique is however not user-friendly at all. Another approach to distinguishing a fake user from a real one is by measuring the temperature of the user, thus clearly proving its liveliness. However, this requires technology that is not found on current mobile devices, thus is not an acceptable solution either. The research described in this paper looks for a low-resource and user-friendly approach to prevent such spoofing attacks.
+
+A user trying to spoof a face recognition system has a variety of choices to do so. He can present a still image, he can present a video or he can present himself with a 3D-mask of the user he wants to imitate. Since the latter is a complicated technique to perform for an attacker, the focus of the method in this research is on detecting still images and video attacks. When an attacker presents a picture of the user or a video of the user, we call this a 'recaptured image'. A promising method is micro-texture analysis, which focuses on the minor difference between an actual face and a recaptured image. Recaptured images of faces, such as regular prints, usually contain small defects that can be detected through texture analysis. This method uses only one frame to detect whether or not the presented user is real, thus it automatically also works for video spoofing attacks. The analysis method implemented is called Local Binary patterns (LBP); a technique that examines neighboring pixels to determine patterns in images. A Support Vector Machine (SVM) is then trained with the LBP's of a set of images. When a new image is then analyzed and run through the SVM, it should be correctly classified as a real presentation or a presentation attack.
+
+In the following parts, this research will be ellaborated. In section \ref{problem} the addressed problem will be further explained. Section \ref{question} will then further explain the research question. In section \ref{related} related work will be discussed and possible improvements will be proposed. Further explanation of the methods and approaches of this research used will be discussed in section \ref{methods}. Results will then be shown in section \ref{results}. Discussion on the research will be found in section \ref{discussion} and conclusions will then be drawn in section \ref{conclusions}.
+
+\section{Problem Statement} \label{problem}
+A high variety of spoofing attack detections exists. However, in this research we aim to provide a method that users would want, or at least would not mind, to use to unlock their mobile phones. Therefore it is assumed that the unlocking mechanism is used frequently and thus plenty of succesfull spoofing detection methods are no longer wanted. A challenge-response mechanism for example would require too much effort and time from the user if it would be used frequently throughout the day. In order to find a method that is less intrusive and fast performing, it is necessary that the found method relies only on available hard- and software in current day mobile phones. Therefore, using face recogntion has been chosen as an assumed working identification method.
+
+In the current state of the art, various techniques have been researched and found to prevent spoofing attacks on face recognition. However, they vary highly in reliability and computational time. Many practical applications of face recognition are likely to be found on mobile phones, where authorization is required or desired frequently. The current state of the art is not conclusive about how reliable and fast spoofing prevention methods will perform on mobile devices when served with simple mobile phone captured images. The proposed research will try to find a method that fills this gap to make face recognition a more practical and reliable tool for mobile devices.
+
+\section{Research question} \label{question}
+A mobile phone has limited camera quality, especially with most front-facing cameras. The goal is to detect a real face, one that is not recaptured, in as short a time as possible, thus to be user-friendly and truly mobile. Mobile phones are however limited in processing power, thus complicated techniques are not likely to be fast.
+
+\begin{itemize}
+	\item How fast and reliable can a real face be detected with a mobile phone camera?
+	\begin{itemize}
+		\item Can a low false acceptance rate (FAR) and a low false rejection rate (FRR) be achieved?
+		\item Can this be performed in a non-intrusive way and without high waiting times?
+	\end{itemize}
+\end{itemize}
+In \ref{related} it is explained that FAR of 2.2\% and FRR of 13\% are the current state of art. This research has therefore aimed to achieve comparable results, where comparable is defined as a deviation of at most 10\%. Thus an FAR of at most 2.4\% and an FRR of at most 14.3\%.
+
+\section{Related work} \label{related}
+\cite{maatta2011face} investigated face spoofing detection of single images using micro-texture analysis. Their experiments were run on photo-quality and laser-quality printed faces. The spoofing detection was run on a regular computer. The idea of this research however was to perform experiments run on a mobile phone with images captured by the mobile phone. The experiment was also run on attacks by recaptured images of digital displays as to compare the results of those to paper-printed attacks.
+
+\cite{bai2010physics} too investigated face spoofing detection on single images. Bai et al. too used a texture-based analysis method. In their experiments however, they used high quality cameras to capture the images. In this reasearch the images were captured with a low-quality mobile phone camera. Besides that, the method in \cite{bai2010physics} took almost five seconds which this research aimed to improve.
+Other methods for detecting face spoofing exist too, but they either use too complex techniques (such as thermal cameras) which are not available on regular mobile phones, or techniques that require more time, for example to capture multiple frames or even request a certain response from the user (challenge-response techniques).
+
+\section{Methods and approach} \label{methods}
+
+\subsection{Dataset} \label{dataset}
+As explained in \ref{related}, this research aims to test on both paper recaptured spoofing attacks as well as digital screen recaptured spoofing attacks. Since this research is aimed on low-resources and mobile phones, a new dataset had to be build. Twenty people have been asked to capture their face. These captures were made with the front-facing camera of the same mobile phone, thus testing on low-quality images. The phone used for this research is a Oneplus 2 from the Chinese manufacturer Oneplus. A variety of lightings and some small variety in poses were made by the twenty subjects. This resembles real-life scenarios in which the subject will want to use face-identification on his/her mobile phone. A few examples of captured images are shown in figure \ref{fig:pictures}.
+
+\begin{figure}[h]
+	\includegraphics[scale=0.2]{pictures}
+	\caption{Example pictures taken by subjects}
+	\label{fig:pictures}
+\end{figure}
+
+Since only the actual face, and not the background of the picture, is of interest to this research, the pictures were normalized. Facial recognition/identification systems will also normalize pictures, therefore this is not regarded as part of the process nor as a contribution to the computation time the provided method in this research will require. Because of the limited scope of this research, the pictures where thus normalized manually using Adobe Photoshop CC 2015. Examples of the normalized pictures in figure \ref{fig:pictures} are shown in figure \ref{fig:normalized}. The normalization was done by boxing the face of one subject and taking that as the first normalized image. The distance between the eyes of that subject was then measured and used to normalize the remaining pictures, keeping the size of the box equal to the one of the first subject and the distance between the eyes equal to the distance between the eyes of the first subject.
+
+\begin{figure}[h]
+	\includegraphics[scale=0.2]{normalized}
+	\caption{Normalized versions of figure \ref{fig:pictures}}
+	\label{fig:normalized}
+\end{figure}
+
+
+\subsection{Image analyzation algorithm} \label{lbp}
+The provided method in this research implements a micro-texture analysis based method called Local Binary Patterns (LBP). The LBP-algorithm consists of the following steps:
+\begin{enumerate}
+	\item Split the image up into cells
+	\item For each pixel in the cell, compare its value to the value of its surrounding neighbours.
+	\item If the neighbours value is higher, register a zero, otherwise register a one. This results in an 8-digit binary number.
+	\item Compute the histogram over the cell of the frequency of occurence of each binary number.
+	\item Concatenate the histograms of each of the cells of the image.
+\end{enumerate}
+
+The LBP-algorithm in this research splits the images up into four cells over which it calculates the histograms. An example for LBP-algorithm over a single pixel is given in figure \ref{fig:lbp_pixel}. An example histogram of one cell is given in figure \ref{fig:histogram} and an example of concatenated histograms is shown in figure \ref{fig:concat_histograms}.
+
+\begin{figure}[h]
+	\includegraphics[scale=0.2]{lbp_pixel}
+	\caption{Steps 2 and 3 of the LBP-algorithm}
+	\label{fig:lbp_pixel}
+\end{figure}
+
+\begin{figure}[h]
+	\includegraphics[scale=0.2]{histogram}
+	\caption{Step 4  of the LBP-algorithm}
+	\label{fig:histogram}
+\end{figure}
+
+\begin{figure}[h]
+	\includegraphics[scale=0.1]{concat_histograms}
+	\caption{Step 5 of the LBP-algorithm}
+	\label{fig:concat_histograms}
+\end{figure}
+
+\subsection{Classification of images}
+
+
+\section{Results} \label{results}
+
+
+\section{Discussion} \label{discussion}
+
+\section{Conclusions} \label{conclusions}
+
+\bibliographystyle{abbrv}
+\bibliography{sigproc}
+
+\balancecolumns
+\end{document}
