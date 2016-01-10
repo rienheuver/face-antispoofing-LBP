@@ -46,7 +46,7 @@ public class ProcessImage
 		        List<Histogram> features = descriptor.run(image);
 		        VisualHistogram vh = new VisualHistogram(features,(int) Math.pow(2, numPoints));
 		        vh.saveImage(lbp_file);
-		        int label = 0;
+		        int label = 2;
 		        if (subdir.getName().equals("original"))
 		        {
 		        	label = 1;

@@ -109,7 +109,11 @@ The LBP-algorithm in this research splits the images up into four cells over whi
 \end{figure}
 
 \subsection{Classification of images}
+The histograms calculated per image (see section \ref{lbp}) can be used to classify the images, where we consider two classes: real faces and spoofed faces. This classification is done through machine learning. A certain amount of images (histograms) is labeled with the class they belong to. They are then used to train a support vector machine \cite{hsu2003practical}, a binary linear classifier. This classifier works as follows:
 
+The concatenated histograms of the images are mapped to points in a space. This mapping is done in such a way that the points belong to a certain class are mapped close to another while keeping a maximum distance to the other class. Thus there will be two groups of dots in the space, one group to which the real faces bolong and one to which the spoofed faces belong.
+
+Once the classifier has been trained with some real and spoofed faces, it can be used to classify new faces. For such a face (image) we once again compute the concatenated histogram with LBP which we then feed to the classifier. The classifier will map it into the space it trained before and will identify to which group it is situated closest. The classifier can then use the label of that group as the class the analyzed face belongs to.
 
 \section{Results} \label{results}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.9)  9 JAN 2016 19:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.9)  10 JAN 2016 11:37
 entering extended mode
 **./facial_antispoofing.tex
 (facial_antispoofing.tex
@@ -306,10 +306,10 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
  <./images/concat_histograms.jpg>] (facial_antispoofing.aux) ) 
 Here is how much of TeX's memory you used:
- 2465 strings out of 493634
- 29601 string characters out of 3141318
- 93244 words of memory out of 3000000
- 5808 multiletter control sequences out of 15000+200000
+ 2466 strings out of 493634
+ 29619 string characters out of 3141318
+ 93247 words of memory out of 3000000
+ 5809 multiletter control sequences out of 15000+200000
  48393 words of font info for 65 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  41i,10n,28p,1372b,247s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -322,7 +322,7 @@ s/type1/public/amsfonts/cm/cmti9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
 ype1/urw/helvetic/uhvb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw
 /helvetic/uhvr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/u
 tmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
-Output written on facial_antispoofing.pdf (3 pages, 1718492 bytes).
+Output written on facial_antispoofing.pdf (3 pages, 1719779 bytes).
 PDF statistics:
  52 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

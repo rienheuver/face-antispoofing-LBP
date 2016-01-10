@@ -26,6 +26,10 @@ R.~M. Bolle, J.~H. Connell, and N.~K. Ratha.
   challenge/response scheme, Feb.~1 2005.
 \newblock US Patent 6,851,051.
 
+\bibitem{hsu2003practical}
+C.-W. Hsu, C.-C. Chang, C.-J. Lin, et~al.
+\newblock A practical guide to support vector classification, 2003.
+
 \bibitem{maatta2011face}
 J.~M{\"a}{\"a}tt{\"a}, A.~Hadid, and M.~Pietikainen.
 \newblock Face spoofing detection from single images using micro-texture
