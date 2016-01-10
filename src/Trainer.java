@@ -19,61 +19,59 @@ public class Trainer
 {
 	ImmutableSvmParameter params;
 
-	private MutableBinaryClassificationProblemImpl problem;		// set by read_problem
+	private MutableBinaryClassificationProblemImpl problem; // set by
+															// read_problem
 	private BinaryModel model;
-	private String input_file_name;		// set by parse_command_line
-	private String model_file_name;		// set by parse_command_line
+	private String input_file_name; // set by parse_command_line
+	private String model_file_name; // set by parse_command_line
 	private boolean crossValidation;
-	
+
 	private static final Float UNSPECIFIED_GAMMA = -1F;
-	
+
 	public Trainer(File inputFile) throws IOException
 	{
 		this.input_file_name = inputFile.getName();
 	}
-	
+
 	public BinaryModel run() throws IOException
 	{
-		
 		C_SVC svm = new C_SVC();
-		
+
 		ImmutableSvmParameterGrid.Builder builder = ImmutableSvmParameterGrid.builder();
-		
+
 		HashSet<Float> cSet = new HashSet<Float>();
 		cSet.add(1.0f);
-		
+
 		HashSet<LinearKernel> kernelSet = new HashSet<LinearKernel>();
 		kernelSet.add(new LinearKernel());
-		
-		
+
 		builder.eps = 1e-3f;
 		builder.Cset = cSet;
 		builder.kernelSet = kernelSet;
-		
+
 		int p = input_file_name.lastIndexOf('/');
 		++p;
-		String temp_name = input_file_name.substring(p); 
-		model_file_name = temp_name.substring(0,temp_name.indexOf('.'))+".model";
+		String temp_name = input_file_name.substring(p);
+		model_file_name = temp_name.substring(0, temp_name.indexOf('.')) + ".model";
 
 		this.params = builder.build();
-		
+
 		read_problem();
-		
-		
+
 		model = svm.train(problem, params);
-		
+
 		model.save(model_file_name);
-		
-		return model;		
+
+		return model;
 	}
 
 	private void read_problem() throws IOException
 	{
 		BufferedReader fp = new BufferedReader(new FileReader(input_file_name));
-		
+
 		Map<Integer, SparseVector> data = new HashMap<Integer, SparseVector>();
 		int lines = 0;
-		
+
 		while (true)
 		{
 			String line = fp.readLine();
@@ -82,12 +80,12 @@ public class Trainer
 				break;
 			}
 			StringTokenizer st = new StringTokenizer(line, " \t\n\r\f:");
-			
-			int value_amount = (st.countTokens()-1)/2;
-			
+
+			int value_amount = (st.countTokens() - 1) / 2;
+
 			SparseVector sv = new SparseVector(value_amount);
 			int label = Integer.parseInt(st.nextToken());
-			
+
 			int[] indices = new int[value_amount];
 			float[] values = new float[value_amount];
 			for (int i = 0; i < value_amount; i++)
@@ -100,14 +98,14 @@ public class Trainer
 			data.put(label, sv);
 			lines++;
 		}
-		
+
 		problem = new MutableBinaryClassificationProblemImpl(String.class, lines);
-		
+
 		for (int i : data.keySet())
 		{
 			problem.addExample(data.get(i), i);
 		}
-		
+
 		fp.close();
 	}
 }

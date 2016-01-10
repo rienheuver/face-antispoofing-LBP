@@ -4,3 +4,6 @@ pictures
 fun
 bin
 /target/
+train
+faceSpoofing.data
+faceSpoofing.model

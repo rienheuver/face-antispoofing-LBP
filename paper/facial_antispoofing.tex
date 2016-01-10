@@ -8,7 +8,7 @@
 
 \begin{document}
 
-\title{Face Spoofing Detection on Mobile Phones in a User-friendly Manner.}
+\title{Low-Resource Face Spoofing Detection in a User-friendly Manner.}
 
 
 \numberofauthors{1}
@@ -25,7 +25,7 @@ Rien Heuver\\
 \maketitle
 
 \begin{abstract}
-In this paper...
+This research aims to distinguish real faces from spoofed faces when presented to a mobile phone front-camera. Since face recognition is potentially an incredibly user-friendly method to authenticate a user, it is important that the false acceptance rate (FAR) and false rejection rate (FRR) are as low as possible. However, the detection method should not require a large amount of time to classify nor should it depend on resources not present on regular mobile phones. Current research proves that texture analysis through Local Binary Patterns (LBP) is a promising method of distinguishing real from fake faces. This research creates a new small dataset consisting of images taken with a mobile phone front-camera. The calculated LBP's are used to train a machine learning binary linear classifier. A FAR of 2.5\% and a FRR of 7.1\% were found with an average computation time of 67 milliseconds. These results proof that an effective low-resource anti-spoofing method is possible.
 \end{abstract}
 
 \section{Introduction} \label{introduction}
@@ -117,10 +117,41 @@ Once the classifier has been trained with some real and spoofed faces, it can be
 
 \section{Results} \label{results}
 
+\subsection{Trained model} \label{model}
+The results of this research are unfortunately limited due to limited time. It requires a rather large amount of manual work and time to construct an ellaborate dataset on this matter. Because of the absence of time the used dataset was quite limited. The results found however are nonetheless meaningful in this research. The dataset consists of twenty faces, twenty paper-recaptures and twenty screen-recaptures resulting in a total of sixty images. To train the classifier, six subjects, a total of eighteen images, were separated from the dataset. The remaining fourteen subjects, fourty-two images, were used to generate tests. The model derived from training with six subjects is shown in figure \ref{fig:model}.
+
+\begin{figure}[h]
+	\includegraphics[scale=0.2]{model}
+	\caption{The linear binary classifier trained with six subjects}
+	\label{fig:model}
+\end{figure}
+
+It seems to sufficiently separate the real faces (coloured blue) from the paper and screen faces (coloured yellow).
+
+\subsection{Testing subjects} \label{tests}
+When the other subjects are however plotted in the same way, the results as shown in figure \ref{fig:tests} are found. In figure \ref{fig:tests} the screen faces have been coloured pink to show the clear difference between the two spoofing methods.
+
+\begin{figure}[h]
+	\includegraphics[scale=0.2]{tests}
+	\caption{The plotted remaining fourteen test-subjects}
+	\label{fig:tests}
+\end{figure}
+
+As further ellaborated on in section \ref{stats}, there was only one image that was able to generate a false accept. This image was indeed a screen recapture. The image is however not distinctly different from the other screen recaptures to the human eye \footnote{Not all subjects allowed for their pictures to be published, which is why the false accept image is not shown}.
+
+\subsection{Answering research questions} \label{stats}
+Fourteen subjects were tested on the classifier that was trained as explained in \ref{model}. Only one image was able to generate a false accept, and three images were able to generate a false reject. The achieved FAR thus is 2.4\% and the FRR is 7.1\%. The FAR was aimed to be below 2.2\% which unfortunately did not succeed. However, as explained in section \ref{model}, this could well be because of a limited dataset and limited training of the model.
+
+Besides achieving certain percentages regarding accepts and rejects of images, the processing time of the algorithm is also of importance to this research. The average time of the classification of al forty-two images was measured, where the entire time taken to classify an image was measured. This means both the LBP-algorithm as the classification through the binary linear classifier. The average time taken was 67 milliseconds.
 
 \section{Discussion} \label{discussion}
+Whether or not this research answers the research questions is a debatable matter. The first sub-question, whether or not a low FAR and low FRR could be achieved, is not entirely answered. The results as shown in section \ref{results} are not conclusive because of the limitations of the dataset. However, it does show that with a small amount of training data, most classification (93.5\%) can be successful. When a larger and more varied dataset is constructed, more accurate results could be determined. In a general sense, a machine learning algorithm, such as the binary linear classifier, will perform better when trained with more data. Thus the results found in this research proof to be at least promising.
 
-\section{Conclusions} \label{conclusions}
+The second research question was whether or not the classification of faces could be done in a non-intrusive and relatively fast way. The method discussed in this research is clearly non-intrusive. The user only has to show his/her face to the front-camera of his/her mobile phone.
+
+About the waiting times, the following can be said. The results found in this research were generated on a desktop machine with rather sufficient (graphics accelerated) processing power. However, the algorithm took only 67 milliseconds per image to classify it. Mobile phones that are equipped with a front-camera should have sufficient processing power to still have the classification done within reasonable times.
+
+Both research questions are therefore not fully answered, but the found results are promising.
 
 \bibliographystyle{abbrv}
 \bibliography{sigproc}

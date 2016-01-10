@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.9)  10 JAN 2016 11:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.9)  10 JAN 2016 20:24
 entering extended mode
 **./facial_antispoofing.tex
 (facial_antispoofing.tex
@@ -243,6 +243,14 @@ Overfull \hbox (7.80002pt too wide) in paragraph at lines 25--25
  []
 
 
+Overfull \hbox (3.23518pt too wide) in paragraph at lines 28--30
+\T1/aer/m/n/9 faces when pre-sented to a mo-bile phone front-camera. Since
+ []
+
+
+LaTeX Warning: Reference `conclusions' on page 1 undefined on input line 36.
+
+
 Overfull \hbox (2.58707pt too wide) in paragraph at lines 39--40
 \T1/aer/m/n/9 suc-ces-full spoof-ing de-tec-tion meth-ods are no longer wanted.
 
@@ -280,12 +288,18 @@ File: images/lbp_pixel.png Graphic file (type png)
 Package pdftex.def Info: images/lbp_pixel.png used on input line 94.
 (pdftex.def)             Requested size: 200.74644pt x 60.22392pt.
 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 <images/histogram.jpg, id=15, 878.28125pt x 256.96pt>
 File: images/histogram.jpg Graphic file (type jpg)
 
 <use images/histogram.jpg>
 Package pdftex.def Info: images/histogram.jpg used on input line 100.
 (pdftex.def)             Requested size: 175.65314pt x 51.39108pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 <images/concat_histograms.jpg, id=16, 2388.925pt x 256.96pt>
 File: images/concat_histograms.jpg Graphic file (type jpg)
@@ -301,30 +315,59 @@ Overfull \hbox (6.70651pt too wide) in paragraph at lines 106--107
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[2 <./images/pictures.png> <./images/normalized.png> <./images/lbp_pixel.png> <
-./images/histogram.jpg>] (facial_antispoofing.bbl) [3
+[2 <./images/pictures.png> <./images/normalized.png>]
+<images/model.png, id=21, 496.85625pt x 496.85625pt>
+File: images/model.png Graphic file (type png)
+ <use images/model.png>
+Package pdftex.def Info: images/model.png used on input line 124.
+(pdftex.def)             Requested size: 99.36948pt x 99.36948pt.
 
- <./images/concat_histograms.jpg>] (facial_antispoofing.aux) ) 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<images/tests.png, id=22, 496.85625pt x 496.85625pt>
+File: images/tests.png Graphic file (type png)
+ <use images/tests.png>
+Package pdftex.def Info: images/tests.png used on input line 135.
+(pdftex.def)             Requested size: 99.36948pt x 99.36948pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (2.80127pt too wide) in paragraph at lines 148--149
+\T1/aer/m/n/9 tions is a de-bat-able mat-ter. The first sub-question, whether
+ []
+
+[3 <./images/lbp_pixel.png> <./images/histogram.jpg> <./images/concat_histogram
+s.jpg> <./images/model.png>] (facial_antispoofing.bbl) [4
+
+ <./images/tests.png>] (facial_antispoofing.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 2466 strings out of 493634
- 29619 string characters out of 3141318
- 93247 words of memory out of 3000000
- 5809 multiletter control sequences out of 15000+200000
- 48393 words of font info for 65 fonts, out of 3000000 for 9000
+ 2485 strings out of 493634
+ 29872 string characters out of 3141318
+ 94285 words of memory out of 3000000
+ 5823 multiletter control sequences out of 15000+200000
+ 50546 words of font info for 68 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 41i,10n,28p,1372b,247s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files
- (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files (x86)/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files (x86)/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmti9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
-ype1/urw/helvetic/uhvb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw
-/helvetic/uhvr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/u
-tmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
-Output written on facial_antispoofing.pdf (3 pages, 1719779 bytes).
+ 41i,10n,28p,1372b,246s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
+m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files (x8
+6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files (x86)/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/Program Files (x86)/MiK
+TeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/
+fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
+pe1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/tim
+es/utmr8a.pfb>
+Output written on facial_antispoofing.pdf (4 pages, 1739312 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
+ 62 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
