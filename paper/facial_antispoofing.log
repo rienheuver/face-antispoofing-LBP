@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.9)  10 JAN 2016 20:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.9)  11 JAN 2016 17:36
 entering extended mode
 **./facial_antispoofing.tex
 (facial_antispoofing.tex
@@ -219,39 +219,36 @@ LaTeX Font Info:    ... okay on input line 9.
 \makeMPintoPDFobject=\count115
 \everyMPtoPDFconversion=\toks37
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 25.
+LaTeX Font Info:    Try loading font information for U+msa on input line 28.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 25.
+LaTeX Font Info:    Try loading font information for U+msb on input line 28.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 25.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 28.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ulasy.fd"
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-Overfull \hbox (10.79999pt too wide) in paragraph at lines 25--25
+Overfull \hbox (10.79999pt too wide) in paragraph at lines 28--28
  [][][] 
  []
 
 
-Overfull \hbox (7.80002pt too wide) in paragraph at lines 25--25
+Overfull \hbox (7.80002pt too wide) in paragraph at lines 28--28
  [] 
  []
 
 
-Overfull \hbox (3.23518pt too wide) in paragraph at lines 28--30
+Overfull \hbox (3.23518pt too wide) in paragraph at lines 31--33
 \T1/aer/m/n/9 faces when pre-sented to a mo-bile phone front-camera. Since
  []
 
 
-LaTeX Warning: Reference `conclusions' on page 1 undefined on input line 36.
-
-
-Overfull \hbox (2.58707pt too wide) in paragraph at lines 39--40
+Overfull \hbox (2.58707pt too wide) in paragraph at lines 42--43
 \T1/aer/m/n/9 suc-ces-full spoof-ing de-tec-tion meth-ods are no longer wanted.
 
  []
@@ -260,55 +257,60 @@ Overfull \hbox (2.58707pt too wide) in paragraph at lines 39--40
 
 
 ]
-<images/pictures.png, id=11, 1204.5pt x 301.125pt>
+<images/pictures.png, id=12, 1204.5pt x 301.125pt>
 File: images/pictures.png Graphic file (type png)
  <use images/pictures.png>
-Package pdftex.def Info: images/pictures.png used on input line 67.
+Package pdftex.def Info: images/pictures.png used on input line 70.
 (pdftex.def)             Requested size: 240.89574pt x 60.22392pt.
 
-Overfull \hbox (8.69576pt too wide) in paragraph at lines 67--68
+Overfull \hbox (8.69576pt too wide) in paragraph at lines 70--71
 [][] 
  []
 
-<images/normalized.png, id=12, 1204.5pt x 301.125pt>
+<images/normalized.png, id=13, 1204.5pt x 301.125pt>
 File: images/normalized.png Graphic file (type png)
 
 <use images/normalized.png>
-Package pdftex.def Info: images/normalized.png used on input line 75.
+Package pdftex.def Info: images/normalized.png used on input line 78.
 (pdftex.def)             Requested size: 240.89574pt x 60.22392pt.
 
-Overfull \hbox (8.69576pt too wide) in paragraph at lines 75--76
+Overfull \hbox (8.69576pt too wide) in paragraph at lines 78--79
 [][] 
  []
 
-<images/lbp_pixel.png, id=13, 1003.75pt x 301.125pt>
+
+Overfull \hbox (2.0745pt too wide) in paragraph at lines 85--86
+\T1/aer/m/n/9 anal-y-sis based method called Lo-cal Bi-nary Pat-terns (LBP).
+ []
+
+<images/lbp_pixel.png, id=14, 1003.75pt x 301.125pt>
 File: images/lbp_pixel.png Graphic file (type png)
 
 <use images/lbp_pixel.png>
-Package pdftex.def Info: images/lbp_pixel.png used on input line 94.
+Package pdftex.def Info: images/lbp_pixel.png used on input line 97.
 (pdftex.def)             Requested size: 200.74644pt x 60.22392pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<images/histogram.jpg, id=15, 878.28125pt x 256.96pt>
+<images/histogram.jpg, id=16, 878.28125pt x 256.96pt>
 File: images/histogram.jpg Graphic file (type jpg)
 
 <use images/histogram.jpg>
-Package pdftex.def Info: images/histogram.jpg used on input line 100.
+Package pdftex.def Info: images/histogram.jpg used on input line 103.
 (pdftex.def)             Requested size: 175.65314pt x 51.39108pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<images/concat_histograms.jpg, id=16, 2388.925pt x 256.96pt>
+<images/concat_histograms.jpg, id=17, 2388.925pt x 256.96pt>
 File: images/concat_histograms.jpg Graphic file (type jpg)
 
 <use images/concat_histograms.jpg>
-Package pdftex.def Info: images/concat_histograms.jpg used on input line 106.
+Package pdftex.def Info: images/concat_histograms.jpg used on input line 109.
 (pdftex.def)             Requested size: 238.9065pt x 25.6975pt.
 
-Overfull \hbox (6.70651pt too wide) in paragraph at lines 106--107
+Overfull \hbox (6.70651pt too wide) in paragraph at lines 109--110
 [][] 
  []
 
@@ -316,58 +318,56 @@ Overfull \hbox (6.70651pt too wide) in paragraph at lines 106--107
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [2 <./images/pictures.png> <./images/normalized.png>]
-<images/model.png, id=21, 496.85625pt x 496.85625pt>
+<images/model.png, id=23, 496.85625pt x 496.85625pt>
 File: images/model.png Graphic file (type png)
  <use images/model.png>
-Package pdftex.def Info: images/model.png used on input line 124.
+Package pdftex.def Info: images/model.png used on input line 127.
 (pdftex.def)             Requested size: 99.36948pt x 99.36948pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<images/tests.png, id=22, 496.85625pt x 496.85625pt>
+<images/tests.png, id=24, 496.85625pt x 496.85625pt>
 File: images/tests.png Graphic file (type png)
  <use images/tests.png>
-Package pdftex.def Info: images/tests.png used on input line 135.
+Package pdftex.def Info: images/tests.png used on input line 138.
 (pdftex.def)             Requested size: 99.36948pt x 99.36948pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (2.80127pt too wide) in paragraph at lines 148--149
+Overfull \hbox (2.80127pt too wide) in paragraph at lines 151--152
 \T1/aer/m/n/9 tions is a de-bat-able mat-ter. The first sub-question, whether
  []
 
 [3 <./images/lbp_pixel.png> <./images/histogram.jpg> <./images/concat_histogram
 s.jpg> <./images/model.png>] (facial_antispoofing.bbl) [4
 
- <./images/tests.png>] (facial_antispoofing.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+ <./images/tests.png>] (facial_antispoofing.aux) ) 
 Here is how much of TeX's memory you used:
  2485 strings out of 493634
- 29872 string characters out of 3141318
+ 29866 string characters out of 3141318
  94285 words of memory out of 3000000
- 5823 multiletter control sequences out of 15000+200000
- 50546 words of font info for 68 fonts, out of 3000000 for 9000
+ 5822 multiletter control sequences out of 15000+200000
+ 51682 words of font info for 69 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 41i,10n,28p,1372b,246s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files
- (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files (x8
-6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files (x86)/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/Program Files (x86)/MiK
-TeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/
-fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
-pe1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/tim
-es/utmr8a.pfb>
-Output written on facial_antispoofing.pdf (4 pages, 1739312 bytes).
+ 41i,10n,28p,1368b,246s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTe
+X 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmsy9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmti9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/helvetic/u
+hvb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pf
+b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files (x
+86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on facial_antispoofing.pdf (4 pages, 1763078 bytes).
 PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
+ 70 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
