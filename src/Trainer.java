@@ -39,28 +39,25 @@ public class Trainer
 
 		ImmutableSvmParameterGrid.Builder builder = ImmutableSvmParameterGrid.builder();
 
-		HashSet<Float> cSet = new HashSet<Float>();
+		HashSet<Float> cSet;
+		HashSet<LinearKernel> kernelSet;
+		
+		cSet = new HashSet<Float>();
 		cSet.add(1.0f);
-
-		HashSet<LinearKernel> kernelSet = new HashSet<LinearKernel>();
+		
+		kernelSet = new HashSet<LinearKernel>();
 		kernelSet.add(new LinearKernel());
-
-		builder.eps = 1e-3f;
+		
+		//configuring parameters
+		builder.eps = 0.001f;
 		builder.Cset = cSet;
 		builder.kernelSet = kernelSet;
-
-		int p = input_file_name.lastIndexOf('/');
-		++p;
-		String temp_name = input_file_name.substring(p);
-		model_file_name = temp_name.substring(0, temp_name.indexOf('.')) + ".model";
 
 		this.params = builder.build();
 
 		read_problem();
 
 		model = svm.train(problem, params);
-
-		model.save(model_file_name);
 
 		return model;
 	}
