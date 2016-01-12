@@ -63,18 +63,18 @@ class VisualHistogram extends JPanel {
             int maxValue = 0;
             for (Histogram h : histograms)
             {
-            	int[] map = h.getHistogram();
-	            for (int key : map) {
-	                int value = map[key];
+            	Map<Integer,Integer> map = h.getHistogram();
+	            for (int key : map.keySet()) {
+	                int value = map.get(key);
 	                maxValue = Math.max(maxValue, value);
 	            }
             }
             int xPos = xOffset;
             for (Histogram h : histograms)
             {
-            	int[] map = h.getHistogram();
-	            for (int key : map) {
-	                int value = map[key];
+            	Map<Integer,Integer> map = h.getHistogram();
+	            for (int key : map.keySet()) {
+	                int value = map.get(key);
 	                int barHeight = Math.round(((float) value / (float) maxValue) * height);
 	            	int colourCode = Math.round((float) key/(float) maxKey*255);
 	                g2d.setColor(new Color(colourCode,colourCode,colourCode));

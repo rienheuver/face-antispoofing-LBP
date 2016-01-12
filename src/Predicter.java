@@ -59,10 +59,10 @@ public class Predicter {
 		List<Integer> vals = new ArrayList<Integer>();
 		for (Histogram h : features)
 		{
-			for (int i : h.getHistogram())
+			for (int i : h.getHistogram().keySet())
 			{
 				ins.add(i);
-				vals.add(h.getHistogram()[i]);
+				vals.add(h.getHistogram().get(i));
 			}
 		}
 		
