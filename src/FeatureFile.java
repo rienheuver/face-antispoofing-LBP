@@ -14,10 +14,10 @@ public class FeatureFile
 		String addition = label+" ";
 		for (Histogram h : features)
 		{
-			Map<Integer,Integer> m = h.getHistogram();
-			for (Integer i : m.keySet())
+			int[] m = h.getHistogram();
+			for (int i : m)
 			{
-				addition += i+":"+m.get(i)+" ";
+				addition += i+":"+m[i]+" ";
 			}
 		}
 		fileContents += addition.substring(0,(addition.length()-1))+"\n";

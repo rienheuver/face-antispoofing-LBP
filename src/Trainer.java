@@ -2,13 +2,17 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.Vector;
 
 import edu.berkeley.compbio.jlibsvm.ImmutableSvmParameter;
 import edu.berkeley.compbio.jlibsvm.ImmutableSvmParameterGrid;
+import edu.berkeley.compbio.jlibsvm.ImmutableSvmParameterPoint;
+import edu.berkeley.compbio.jlibsvm.binary.BinaryClassificationProblem;
 import edu.berkeley.compbio.jlibsvm.binary.BinaryModel;
 import edu.berkeley.compbio.jlibsvm.binary.C_SVC;
 import edu.berkeley.compbio.jlibsvm.binary.MutableBinaryClassificationProblemImpl;
@@ -31,6 +35,7 @@ public class Trainer
 	public Trainer(File inputFile) throws IOException
 	{
 		this.input_file_name = inputFile.getName();
+		this.model_file_name = inputFile.getName()+".model";
 	}
 
 	public BinaryModel run() throws IOException
@@ -43,7 +48,7 @@ public class Trainer
 		HashSet<LinearKernel> kernelSet;
 		
 		cSet = new HashSet<Float>();
-		cSet.add(1.0f);
+		cSet.add(100.0f);
 		
 		kernelSet = new HashSet<LinearKernel>();
 		kernelSet.add(new LinearKernel());
@@ -58,16 +63,19 @@ public class Trainer
 		read_problem();
 
 		model = svm.train(problem, params);
-
+		model.save(model_file_name);
+		
 		return model;
 	}
 
 	private void read_problem() throws IOException
 	{
 		BufferedReader fp = new BufferedReader(new FileReader(input_file_name));
-
+		Vector<Float> vy = new Vector<Float>();
+		Vector<SparseVector> vx = new Vector<SparseVector>();
+		int max_index = 0;
+		
 		Map<Integer, SparseVector> data = new HashMap<Integer, SparseVector>();
-		int lines = 0;
 
 		while (true)
 		{
@@ -78,31 +86,39 @@ public class Trainer
 			}
 			StringTokenizer st = new StringTokenizer(line, " \t\n\r\f:");
 
-			int value_amount = (st.countTokens() - 1) / 2;
+			vy.addElement(Float.parseFloat(st.nextToken()));
+			int value_amount = st.countTokens() / 2;
 
 			SparseVector sv = new SparseVector(value_amount);
-			int label = Integer.parseInt(st.nextToken());
 
-			int[] indices = new int[value_amount];
-			float[] values = new float[value_amount];
 			for (int i = 0; i < value_amount; i++)
 			{
-				indices[i] = Integer.parseInt(st.nextToken());
-				values[i] = Float.parseFloat(st.nextToken());
+				sv.indexes[i] = Integer.parseInt(st.nextToken());
+				sv.values[i] = Float.parseFloat(st.nextToken());
 			}
-			sv.indexes = indices;
-			sv.values = values;
-			data.put(label, sv);
-			lines++;
+			if (value_amount > 0)
+			{
+				max_index = Math.max(max_index,  sv.indexes[value_amount-1]);
+			}
+			vx.addElement(sv);
 		}
+		
+		problem = new MutableBinaryClassificationProblemImpl(String.class, vy.size());
 
-		problem = new MutableBinaryClassificationProblemImpl(String.class, lines);
-
-		for (int i : data.keySet())
+		for (int i = 0; i < vy.size(); i++)
 		{
-			problem.addExample(data.get(i), i);
+			problem.addExampleFloat(vx.elementAt(i), vy.elementAt(i));
 		}
+		((BinaryClassificationProblem) problem).setupLabels();
 
+		/*
+		*** Niet nodig want geen gamma-kernel
+		for (ImmutableSvmParameterPoint subparam : gridParams)
+		{
+			updateKernelWithNumExamples(subparam, max_index);
+		}
+		*/
+		
 		fp.close();
 	}
 }

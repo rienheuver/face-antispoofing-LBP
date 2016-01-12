@@ -42,7 +42,7 @@ public class Predicter {
         */
         
         SparseVector sv = featurize(features);
-        int predictedLabel = (int) model.predictLabel(sv);
+        int predictedLabel = (int) Float.parseFloat(model.predictLabel(sv).toString());
 		return predictedLabel;
 	}
 	
@@ -59,24 +59,20 @@ public class Predicter {
 		List<Integer> vals = new ArrayList<Integer>();
 		for (Histogram h : features)
 		{
-			for (int i : h.getHistogram().keySet())
+			for (int i : h.getHistogram())
 			{
 				ins.add(i);
-				vals.add(h.getHistogram().get(i));
+				vals.add(h.getHistogram()[i]);
 			}
 		}
 		
-		int[] indices = new int[value_amount];
-		float[] values = new float[value_amount];
+		System.out.println(ins.size());
 		
 		for (int i = 0; i < value_amount; i++)
 		{
-			indices[i] = ins.get(i);
-			values[i] = vals.get(i);
+			sv.indexes[i] = ins.get(i);
+			sv.values[i] = vals.get(i);
 		}
-		
-		sv.indexes = indices;
-		sv.values = values;
 		
 		return sv;
 	}

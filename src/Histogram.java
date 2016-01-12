@@ -1,31 +1,21 @@
-import java.util.Map;
-import java.util.TreeMap;
-
 public class Histogram {
 
-    final Map<Integer, Integer> histogram;
+    private int[] histogram;
 
     public Histogram(int bins) {
-        this.histogram = new TreeMap<Integer,Integer>();
+        this.histogram = new int[(int) Math.pow(2, bins)];
     }
 
     public void add(int value) {
-    	int amount = 0;
-    	if (histogram.containsKey(value)) {
-            amount = histogram.get(value);
-            amount++;
-        } else {
-            amount = 1;
-        }
-    	histogram.put(value, amount);
+    	histogram[value]++;
     }
     
-    public Map<Integer,Integer> getHistogram() {
+    public int[] getHistogram() {
         return histogram;
     }
     
     public int size()
     {
-    	return histogram.size();
+    	return histogram.length;
     }
 }
